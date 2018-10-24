@@ -102,6 +102,7 @@ public class MainPageUI extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 255, 255));
 
+        jScrollPane1.setBackground(new java.awt.Color(0, 255, 255));
         jScrollPane1.setBorder(null);
 
         jTextPane1.setEditable(false);
@@ -459,7 +460,7 @@ public class MainPageUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
