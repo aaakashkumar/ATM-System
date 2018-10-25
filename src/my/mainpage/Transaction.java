@@ -7,20 +7,15 @@ package my.mainpage;
 
 /**
  *
- * @author Akash Kumar
+ * @author Akash PC
  */
-public class MainPageUI extends javax.swing.JFrame {
+public class Transaction extends javax.swing.JFrame {
 
-    private String pinEntry, defaultMainText;
-    
     /**
-     * Creates new form MainPageUI
+     * Creates new form Transaction
      */
-    public MainPageUI() {
+    public Transaction() {
         initComponents();
-        pinEntry = "";
-        defaultMainText = "Welcome to the Bank of UEM, please login to continue";
-        inputjTextPane.setVisible(false);
     }
 
     /**
@@ -56,8 +51,6 @@ public class MainPageUI extends javax.swing.JFrame {
         jTextPaneL3 = new javax.swing.JTextPane();
         jScrollPane9 = new javax.swing.JScrollPane();
         jTextPaneL4 = new javax.swing.JTextPane();
-        jScrollPane10 = new javax.swing.JScrollPane();
-        inputjTextPane = new javax.swing.JTextPane();
         jButtonL1 = new javax.swing.JButton();
         jButtonL2 = new javax.swing.JButton();
         jButtonL3 = new javax.swing.JButton();
@@ -73,12 +66,9 @@ public class MainPageUI extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ATM");
-        setBackground(new java.awt.Color(64, 224, 208));
-        setPreferredSize(new java.awt.Dimension(814, 520));
-        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(64, 224, 208));
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -116,32 +106,31 @@ public class MainPageUI extends javax.swing.JFrame {
         jTextPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTextPane1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jTextPane1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPane1.setText("Welcome to the Bank of UEM, please login to continue");
+        jTextPane1.setText("Choose an option to proceed");
         jTextPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jTextPane1);
 
         jTextPaneR3.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneR3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneR3.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPaneR3.setText("Help");
+        jTextPaneR3.setText("Deposit");
         jScrollPane2.setViewportView(jTextPaneR3);
 
         jTextPaneR2.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneR2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneR2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPaneR2.setText("Admin");
+        jTextPaneR2.setText("Help");
         jScrollPane3.setViewportView(jTextPaneR2);
 
         jTextPaneR1.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneR1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneR1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPaneR1.setText("Login");
         jScrollPane4.setViewportView(jTextPaneR1);
 
         jTextPaneR4.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneR4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneR4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPaneR4.setText("Exit");
+        jTextPaneR4.setText("Balance");
         jScrollPane5.setViewportView(jTextPaneR4);
 
         jTextPaneL1.setBackground(new java.awt.Color(51, 51, 255));
@@ -157,15 +146,14 @@ public class MainPageUI extends javax.swing.JFrame {
         jTextPaneL3.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneL3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneL3.setForeground(new java.awt.Color(255, 255, 255));
+        jTextPaneL3.setText("Withdrawal");
         jScrollPane8.setViewportView(jTextPaneL3);
 
         jTextPaneL4.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneL4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneL4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPaneL4.setText("About");
+        jTextPaneL4.setText("Transfer");
         jScrollPane9.setViewportView(jTextPaneL4);
-
-        jScrollPane10.setViewportView(inputjTextPane);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -180,11 +168,7 @@ public class MainPageUI extends javax.swing.JFrame {
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -198,11 +182,9 @@ public class MainPageUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(76, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -329,6 +311,16 @@ public class MainPageUI extends javax.swing.JFrame {
         });
         jPanel3.add(jButton10);
 
+        jButton11.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        jButton11.setForeground(new java.awt.Color(255, 0, 0));
+        jButton11.setText("X");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton11);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -401,68 +393,61 @@ public class MainPageUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        pinEntry = "";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton10ActionPerformed
+    private void jButtonR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR1ActionPerformed
+        // LOGIN ACTION
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        pinEntry += "1";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        pinEntry += "2";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        pinEntry += "3";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        pinEntry += "4";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        pinEntry += "5";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        pinEntry += "6";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        pinEntry += "7";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        pinEntry += "8";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        pinEntry += "9";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton9ActionPerformed
+        Login loginFrame = new Login();
+        loginFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonR1ActionPerformed
 
     private void jButtonR3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonR3ActionPerformed
 
-    private void jButtonR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR1ActionPerformed
-        // LOGIN ACTION
-        
-        Login loginFrame = new Login();
-        loginFrame.setLocationRelativeTo(null); // center the form
-        loginFrame.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButtonR1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -480,30 +465,28 @@ public class MainPageUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainPageUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Transaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainPageUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Transaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainPageUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Transaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainPageUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Transaction.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                MainPageUI mainFrame = new MainPageUI();
-                mainFrame.setLocationRelativeTo(null);
-                mainFrame.setVisible(true);
+                new Transaction().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextPane inputjTextPane;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -524,7 +507,6 @@ public class MainPageUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;

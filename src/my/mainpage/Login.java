@@ -10,12 +10,17 @@ package my.mainpage;
  * @author Akash PC
  */
 public class Login extends javax.swing.JFrame {
-
+    private String inputText, cardNumber, pin;
+    private enum task {INPUT_CARD_NUMBER, INPUT_PIN};
+    private task status;
+    
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
+        inputText = "";
+        status = task.INPUT_CARD_NUMBER;
     }
 
     /**
@@ -96,6 +101,11 @@ public class Login extends javax.swing.JFrame {
 
         jButtonR4.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jButtonR4.setText("<");
+        jButtonR4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonR4ActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(0, 255, 255));
 
@@ -107,7 +117,7 @@ public class Login extends javax.swing.JFrame {
         jTextPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTextPane1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jTextPane1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPane1.setText("Halua");
+        jTextPane1.setText("Enter your 16 digit card number");
         jTextPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jTextPane1);
 
@@ -120,19 +130,17 @@ public class Login extends javax.swing.JFrame {
         jTextPaneR2.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneR2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneR2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPaneR2.setText("Admin");
         jScrollPane3.setViewportView(jTextPaneR2);
 
         jTextPaneR1.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneR1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneR1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPaneR1.setText("Login");
         jScrollPane4.setViewportView(jTextPaneR1);
 
         jTextPaneR4.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneR4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneR4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPaneR4.setText("Exit");
+        jTextPaneR4.setText("Next");
         jScrollPane5.setViewportView(jTextPaneR4);
 
         jTextPaneL1.setBackground(new java.awt.Color(51, 51, 255));
@@ -153,7 +161,7 @@ public class Login extends javax.swing.JFrame {
         jTextPaneL4.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneL4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneL4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPaneL4.setText("About");
+        jTextPaneL4.setText("Back");
         jScrollPane9.setViewportView(jTextPaneL4);
 
         jScrollPane10.setViewportView(inputjTextPane);
@@ -401,67 +409,86 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonR3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        pinEntry += "1";
-        inputjTextPane.setText(pinEntry);
+        inputText += "1";
+        inputjTextPane.setText(inputText);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        pinEntry += "2";
-        inputjTextPane.setText(pinEntry);
+        inputText += "2";
+        inputjTextPane.setText(inputText);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        pinEntry += "3";
-        inputjTextPane.setText(pinEntry);
+        inputText += "3";
+        inputjTextPane.setText(inputText);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        pinEntry += "4";
-        inputjTextPane.setText(pinEntry);
+        inputText += "4";
+        inputjTextPane.setText(inputText);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        pinEntry += "5";
-        inputjTextPane.setText(pinEntry);
+        inputText += "5";
+        inputjTextPane.setText(inputText);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        pinEntry += "6";
-        inputjTextPane.setText(pinEntry);
+        inputText += "6";
+        inputjTextPane.setText(inputText);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        pinEntry += "7";
-        inputjTextPane.setText(pinEntry);
+        inputText += "7";
+        inputjTextPane.setText(inputText);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        pinEntry += "8";
-        inputjTextPane.setText(pinEntry);
+        inputText += "8";
+        inputjTextPane.setText(inputText);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        pinEntry += "9";
-        inputjTextPane.setText(pinEntry);
+        inputText += "9";
+        inputjTextPane.setText(inputText);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        pinEntry = "";
-        inputjTextPane.setText(pinEntry);
+        inputText = "";
+        inputjTextPane.setText(inputText);
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButtonR4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR4ActionPerformed
+        // NEXT
+        if(status == task.INPUT_CARD_NUMBER)
+        {
+            jTextPane1.setText("Enter your PIN");
+            cardNumber = inputText;
+            status = task.INPUT_PIN;
+        }
+        
+        else if(status == task.INPUT_PIN)
+        {
+            pin = inputText;
+            
+            Transaction transactionFrame = new Transaction();
+            transactionFrame.setLocationRelativeTo(null);
+            transactionFrame.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButtonR4ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        /* Set the Windows look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        /* For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
