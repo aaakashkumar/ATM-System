@@ -94,7 +94,6 @@ public class MySQLAccess {
         preparedStatement.setString(1, Integer.toString(balance));
         preparedStatement.setString(2, cardNumber);
         preparedStatement.executeUpdate();
-        System.out.println(resultSet);
         close();
     }
 

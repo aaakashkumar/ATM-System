@@ -74,6 +74,7 @@ public class Transaction extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jButton0 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
 
@@ -310,6 +311,15 @@ public class Transaction extends javax.swing.JFrame {
         });
         jPanel3.add(jButton9);
 
+        jButton0.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        jButton0.setText("0");
+        jButton0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton0ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton0);
+
         jButton10.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jButton10.setForeground(new java.awt.Color(255, 0, 0));
         jButton10.setText("C");
@@ -459,6 +469,10 @@ public class Transaction extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
 
+    private void jButton0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton0ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton0ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -494,6 +508,7 @@ public class Transaction extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton0;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
