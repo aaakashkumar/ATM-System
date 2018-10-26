@@ -394,15 +394,16 @@ public class Transaction extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR1ActionPerformed
-        // LOGIN ACTION
-
-        Login loginFrame = new Login();
-        loginFrame.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_jButtonR1ActionPerformed
 
     private void jButtonR3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR3ActionPerformed
-        // TODO add your handling code here:
+        // DEPOSIT
+        
+        Deposit depositFrame = new Deposit();
+        depositFrame.setLocationRelativeTo(null);
+        depositFrame.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonR3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

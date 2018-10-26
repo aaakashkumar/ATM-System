@@ -5,42 +5,20 @@
  */
 package my.mainpage;
 
-import my.mainpage.database.MySQLAccess;
-
 /**
  *
- * @author Akash Kumar
+ * @author Akash PC
  */
-public class MainPageUI extends javax.swing.JFrame {
-
-    private String pinEntry, defaultMainText;
-
-    
+public class DepositSavings extends javax.swing.JFrame {
+    private String amount;
     /**
-     * Creates new form MainPageUI
+     * Creates new form DepositSavings
      */
-    public MainPageUI(){
+    public DepositSavings() {
         initComponents();
-        try{
-        createDatabaseConnection();
-        }
-        catch(Exception e){
-            System.out.println("Error in conecting database");
-        }  
-        
-        pinEntry = "";
-        defaultMainText = "Welcome to the Bank of UEM, please login to continue";
-        inputjTextPane.setVisible(false);
+        amount = "";
     }
-    
-    /**
-     * Creates a connection to atmdb database
-     * @throws Exception 
-     */
-    private void createDatabaseConnection() throws Exception{
-        MySQLAccess dao = new MySQLAccess();
-        dao.createConnection();
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,10 +71,6 @@ public class MainPageUI extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ATM");
-        setBackground(new java.awt.Color(64, 224, 208));
-        setPreferredSize(new java.awt.Dimension(814, 520));
-        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(64, 224, 208));
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -123,6 +97,11 @@ public class MainPageUI extends javax.swing.JFrame {
 
         jButtonR4.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jButtonR4.setText("<");
+        jButtonR4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonR4ActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(0, 255, 255));
 
@@ -134,7 +113,7 @@ public class MainPageUI extends javax.swing.JFrame {
         jTextPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTextPane1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jTextPane1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPane1.setText("Welcome to the Bank of UEM, please login to continue");
+        jTextPane1.setText("Enter Amount");
         jTextPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jTextPane1);
 
@@ -147,19 +126,17 @@ public class MainPageUI extends javax.swing.JFrame {
         jTextPaneR2.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneR2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneR2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPaneR2.setText("Admin");
         jScrollPane3.setViewportView(jTextPaneR2);
 
         jTextPaneR1.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneR1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneR1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPaneR1.setText("Login");
         jScrollPane4.setViewportView(jTextPaneR1);
 
         jTextPaneR4.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneR4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneR4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPaneR4.setText("Exit");
+        jTextPaneR4.setText("OK");
         jScrollPane5.setViewportView(jTextPaneR4);
 
         jTextPaneL1.setBackground(new java.awt.Color(51, 51, 255));
@@ -180,7 +157,7 @@ public class MainPageUI extends javax.swing.JFrame {
         jTextPaneL4.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneL4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneL4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPaneL4.setText("About");
+        jTextPaneL4.setText("Cancel");
         jScrollPane9.setViewportView(jTextPaneL4);
 
         jScrollPane10.setViewportView(inputjTextPane);
@@ -419,68 +396,68 @@ public class MainPageUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        pinEntry = "";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        pinEntry += "1";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        pinEntry += "2";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        pinEntry += "3";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        pinEntry += "4";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        pinEntry += "5";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        pinEntry += "6";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        pinEntry += "7";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        pinEntry += "8";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        pinEntry += "9";
-        inputjTextPane.setText(pinEntry);
-    }//GEN-LAST:event_jButton9ActionPerformed
+    private void jButtonR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR1ActionPerformed
+        
+    }//GEN-LAST:event_jButtonR1ActionPerformed
 
     private void jButtonR3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonR3ActionPerformed
 
-    private void jButtonR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR1ActionPerformed
-        // LOGIN ACTION
-        
-        Login loginFrame = new Login();
-        loginFrame.setLocationRelativeTo(null); // center the form
-        loginFrame.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButtonR1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        amount += "1";
+        inputjTextPane.setText(amount);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        amount += "2";
+        inputjTextPane.setText(amount);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        amount += "3";
+        inputjTextPane.setText(amount);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        amount += "4";
+        inputjTextPane.setText(amount);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        amount += "5";
+        inputjTextPane.setText(amount);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        amount += "6";
+        inputjTextPane.setText(amount);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        amount += "7";
+        inputjTextPane.setText(amount);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        amount += "8";
+        inputjTextPane.setText(amount);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        amount += "9";
+        inputjTextPane.setText(amount);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        amount = "";
+        inputjTextPane.setText(amount);
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButtonR4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR4ActionPerformed
+        // Deposit Cash
+        jTextPane1.setText(amount + " has been deposited into your account");
+    }//GEN-LAST:event_jButtonR4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -498,22 +475,20 @@ public class MainPageUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainPageUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositSavings.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainPageUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositSavings.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainPageUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositSavings.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainPageUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepositSavings.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable(){
-            public void run(){
-                MainPageUI mainFrame = new MainPageUI();
-                mainFrame.setLocationRelativeTo(null);
-                mainFrame.setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new DepositSavings().setVisible(true);
             }
         });
     }

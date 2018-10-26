@@ -5,6 +5,8 @@
  */
 package my.mainpage;
 
+import my.mainpage.database.MySQLAccess;
+
 /**
  *
  * @author Akash PC
@@ -19,10 +21,27 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        
+        try{
+        createDatabaseConnection();
+        }
+        catch(Exception e){
+            System.out.println("Error in conecting database");
+        }  
+        
         inputText = "";
         status = task.INPUT_CARD_NUMBER;
     }
-
+    
+    /**
+     * Creates a connection to atmdb database
+     * @throws Exception 
+     */
+    private void createDatabaseConnection() throws Exception{
+        MySQLAccess dao = new MySQLAccess();
+        dao.createConnection();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -465,16 +484,45 @@ public class Login extends javax.swing.JFrame {
             jTextPane1.setText("Enter your PIN");
             cardNumber = inputText;
             status = task.INPUT_PIN;
+            
+            System.out.println(cardNumber);
+            
+            inputText = "";
+            inputjTextPane.setText(inputText);
         }
         
         else if(status == task.INPUT_PIN)
         {
             pin = inputText;
             
-            Transaction transactionFrame = new Transaction();
-            transactionFrame.setLocationRelativeTo(null);
-            transactionFrame.setVisible(true);
-            this.dispose();
+            MySQLAccess dbObj = new MySQLAccess();
+            try{
+                dbObj.createConnection();
+            }
+            catch (Exception e){
+                System.out.println(e);
+            }
+            
+            System.out.println(pin);
+            
+            try{
+                if(dbObj.userExists(cardNumber, pin)){
+                        System.out.println("HELLO");
+                        Transaction transactionFrame = new Transaction();
+                        transactionFrame.setLocationRelativeTo(null);
+                        transactionFrame.setVisible(true);
+                        this.dispose();
+                    }
+                else{
+                    MainPageUI mainFrame = new MainPageUI();
+                    mainFrame.setLocationRelativeTo(null);
+                    mainFrame.setVisible(true);
+                    this.dispose();
+                }
+            }
+            catch (Exception e){
+                System.out.println(e);
+            }
         }
     }//GEN-LAST:event_jButtonR4ActionPerformed
 
