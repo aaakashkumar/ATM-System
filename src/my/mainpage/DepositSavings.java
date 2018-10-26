@@ -5,18 +5,28 @@
  */
 package my.mainpage;
 
+import my.mainpage.database.MySQLAccess;
+
 /**
  *
  * @author Akash PC
  */
 public class DepositSavings extends javax.swing.JFrame {
-    private String amount;
+    private String amount, cardNumber;
+    private int balance;
+    
     /**
      * Creates new form DepositSavings
      */
     public DepositSavings() {
         initComponents();
         amount = "";
+    }
+    
+    public DepositSavings(String cardNumber) {
+        initComponents();
+        amount = "";
+        this.cardNumber = cardNumber;
     }
 
     /**
@@ -456,6 +466,31 @@ public class DepositSavings extends javax.swing.JFrame {
 
     private void jButtonR4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR4ActionPerformed
         // Deposit Cash
+        
+        MySQLAccess dbObj = new MySQLAccess();
+        try{
+            dbObj.createConnection();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        
+        try{
+            balance = dbObj.getSavings(cardNumber);
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        
+        balance = balance + Integer.parseInt(amount);
+        
+        try{
+            dbObj.setSavings(cardNumber, balance);
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        
         jTextPane1.setText(amount + " has been deposited into your account");
     }//GEN-LAST:event_jButtonR4ActionPerformed
 

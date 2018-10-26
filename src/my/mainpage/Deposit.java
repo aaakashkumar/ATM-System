@@ -10,7 +10,8 @@ package my.mainpage;
  * @author Akash PC
  */
 public class Deposit extends javax.swing.JFrame {
-
+    private String cardNumber;
+    
     /**
      * Creates new form Deposit
      */
@@ -18,6 +19,16 @@ public class Deposit extends javax.swing.JFrame {
         initComponents();
     }
 
+    /**
+     * Creates the Deposit form and initializes cardNumber
+     * from the previous form.
+     * @param cardNumber 
+     */
+    public Deposit(String cardNumber) {
+        initComponents();
+        this.cardNumber = cardNumber;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -450,7 +461,7 @@ public class Deposit extends javax.swing.JFrame {
 
     private void jButtonL3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonL3ActionPerformed
         // Deposit to Savings Account
-        DepositSavings depositSavingsFrame = new DepositSavings();
+        DepositSavings depositSavingsFrame = new DepositSavings(cardNumber);
         depositSavingsFrame.setLocationRelativeTo(null);
         depositSavingsFrame.setVisible(true);
         this.dispose();

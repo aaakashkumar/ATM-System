@@ -31,13 +31,12 @@ public class MySQLAccess {
      * @throws SQLException 
      */
     public boolean userExists(String cardNumber, String pin) throws SQLException{
-        System.out.println("HELLO");
         int count = 0;
-        String queryCheck = "SELECT count(*) from customer WHERE customer.cardnumber = ? AND customer.pinnumber = ?";System.out.println("HELLO1");
+        String queryCheck = "SELECT count(*) from customer WHERE customer.cardnumber = ? AND customer.pinnumber = ?";
             preparedStatement = connect.prepareStatement(queryCheck);
-            preparedStatement.setString(1, cardNumber);System.out.println("HELLO3");
-            preparedStatement.setString(2, pin);System.out.println("HELLO4");
-            resultSet = preparedStatement.executeQuery();System.out.println("HELLO5");
+            preparedStatement.setString(1, cardNumber);
+            preparedStatement.setString(2, pin);
+            resultSet = preparedStatement.executeQuery();
             
             if(resultSet.next()) {
                 count = resultSet.getInt(1);
@@ -67,6 +66,36 @@ public class MySQLAccess {
         } catch (Exception e) {
             throw e;
         }
+    }
+    
+    /**
+     * Returns the savings balance of a customer
+     * @param cardNumber
+     * @return
+     * @throws Exception 
+     */
+    public int getSavings(String cardNumber) throws Exception {
+        int amount = 0;
+        String queryCheck = "SELECT customer.savingsbal from customer WHERE customer.cardnumber = ?";
+        preparedStatement = connect.prepareStatement(queryCheck);
+        preparedStatement.setString(1, cardNumber);
+        resultSet = preparedStatement.executeQuery();
+
+        if(resultSet.next()) {
+            amount = resultSet.getInt(1);
+        }
+        
+        return amount;
+    }
+    
+    public void setSavings(String cardNumber, int balance) throws Exception {
+        String queryCheck = "UPDATE customer SET savingsbal = ? WHERE cardnumber = ?";
+        preparedStatement = connect.prepareStatement(queryCheck);
+        preparedStatement.setString(1, Integer.toString(balance));
+        preparedStatement.setString(2, cardNumber);
+        preparedStatement.executeUpdate();
+        System.out.println(resultSet);
+        close();
     }
 
     private void writeMetaData(ResultSet resultSet) throws SQLException {

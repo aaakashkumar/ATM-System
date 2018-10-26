@@ -10,14 +10,23 @@ package my.mainpage;
  * @author Akash PC
  */
 public class Transaction extends javax.swing.JFrame {
-
+    private String cardNumber;
     /**
      * Creates new form Transaction
      */
     public Transaction() {
         initComponents();
     }
-
+    
+    /**
+     * Creates the Transaction form and initializes cardNumber
+     * from the previous form.
+     * @param cardNumber 
+     */
+    public Transaction(String cardNumber) {
+        initComponents();
+        this.cardNumber = cardNumber;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -400,7 +409,7 @@ public class Transaction extends javax.swing.JFrame {
     private void jButtonR3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR3ActionPerformed
         // DEPOSIT
         
-        Deposit depositFrame = new Deposit();
+        Deposit depositFrame = new Deposit(cardNumber);
         depositFrame.setLocationRelativeTo(null);
         depositFrame.setVisible(true);
         this.dispose();

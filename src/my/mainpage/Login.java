@@ -485,7 +485,6 @@ public class Login extends javax.swing.JFrame {
             cardNumber = inputText;
             status = task.INPUT_PIN;
             
-            System.out.println(cardNumber);
             
             inputText = "";
             inputjTextPane.setText(inputText);
@@ -503,12 +502,9 @@ public class Login extends javax.swing.JFrame {
                 System.out.println(e);
             }
             
-            System.out.println(pin);
-            
             try{
                 if(dbObj.userExists(cardNumber, pin)){
-                        System.out.println("HELLO");
-                        Transaction transactionFrame = new Transaction();
+                        Transaction transactionFrame = new Transaction(cardNumber);
                         transactionFrame.setLocationRelativeTo(null);
                         transactionFrame.setVisible(true);
                         this.dispose();
