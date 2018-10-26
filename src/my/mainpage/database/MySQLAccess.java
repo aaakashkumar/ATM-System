@@ -44,8 +44,6 @@ public class MySQLAccess {
             
             close();
             
-            System.out.println("COUNT:" + count);
-            
             if(count == 0)
                 return false;
             
@@ -68,6 +66,23 @@ public class MySQLAccess {
         }
     }
     
+    public void addRecord(String cardNumber, String pin) throws Exception {
+        String query = " insert into customer (cardnumber, pinnumber, savingsbal, currentbal)"
+        + " values (?, ?, ?, ?)";
+
+        // create the mysql insert preparedstatement
+        preparedStatement = connect.prepareStatement(query);
+        preparedStatement.setString (1, cardNumber);
+        preparedStatement.setString (2, pin);
+        preparedStatement.setInt (3, 10000);
+        preparedStatement.setInt (4, 0);
+
+        // execute the preparedstatement
+        preparedStatement.execute();
+
+        close();
+    }
+    
     /**
      * Returns the savings balance of a customer
      * @param cardNumber
@@ -88,6 +103,26 @@ public class MySQLAccess {
         return amount;
     }
     
+    /**
+     * Returns the savings balance of a customer
+     * @param cardNumber
+     * @return
+     * @throws Exception 
+     */
+    public int getCurrent(String cardNumber) throws Exception {
+        int amount = 0;
+        String queryCheck = "SELECT customer.currentbal from customer WHERE customer.cardnumber = ?";
+        preparedStatement = connect.prepareStatement(queryCheck);
+        preparedStatement.setString(1, cardNumber);
+        resultSet = preparedStatement.executeQuery();
+
+        if(resultSet.next()) {
+            amount = resultSet.getInt(1);
+        }
+        
+        return amount;
+    }
+    
     public void setSavings(String cardNumber, int balance) throws Exception {
         String queryCheck = "UPDATE customer SET savingsbal = ? WHERE cardnumber = ?";
         preparedStatement = connect.prepareStatement(queryCheck);
@@ -96,38 +131,14 @@ public class MySQLAccess {
         preparedStatement.executeUpdate();
         close();
     }
-
-    private void writeMetaData(ResultSet resultSet) throws SQLException {
-        //  Now get some metadata from the database
-        // Result set get the result of the SQL query
-
-        System.out.println("The columns in the table are: ");
-
-        System.out.println("Table: " + resultSet.getMetaData().getTableName(1));
-        for  (int i = 1; i<= resultSet.getMetaData().getColumnCount(); i++){
-            System.out.println("Column " +i  + " "+ resultSet.getMetaData().getColumnName(i));
-        }
-    }
-
-    private void writeResultSet(ResultSet resultSet) throws SQLException {
-        System.out.println("HI");
-        // ResultSet is initially before the first data set
-        while (resultSet.next()) {
-            // It is possible to get the columns via name
-            // also possible to get the columns via the column number
-            // which starts at 1
-            // e.g. resultSet.getSTring(2);
-            String id = resultSet.getString("cardnumber");
-            String name = resultSet.getString("pinnumber");
-//            String summary = resultSet.getString("summary");
-//            Date date = resultSet.getDate("datum");
-//            String comment = resultSet.getString("comments");
-            System.out.println("Id: " + id);
-            System.out.println("name: " + name);
-//            System.out.println("summary: " + summary);
-//            System.out.println("Date: " + date);
-//            System.out.println("Comment: " + comment);
-        }
+    
+    public void setCurrent(String cardNumber, int balance) throws Exception {
+        String queryCheck = "UPDATE customer SET currentbal = ? WHERE cardnumber = ?";
+        preparedStatement = connect.prepareStatement(queryCheck);
+        preparedStatement.setString(1, Integer.toString(balance));
+        preparedStatement.setString(2, cardNumber);
+        preparedStatement.executeUpdate();
+        close();
     }
     
     // You need to close the resultSet

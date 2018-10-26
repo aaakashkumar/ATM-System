@@ -5,30 +5,29 @@
  */
 package my.mainpage;
 
+import my.mainpage.database.MySQLAccess;
+
 /**
  *
  * @author Akash PC
  */
-public class Deposit extends javax.swing.JFrame {
-    private String cardNumber;
+public class WithdrawalCurrent extends javax.swing.JFrame {
+    private String amount, cardNumber;
+    private int balance;
     
     /**
-     * Creates new form Deposit
+     * Creates new form WithdrawalCurrent
      */
-    public Deposit() {
+    public WithdrawalCurrent() {
         initComponents();
     }
-
-    /**
-     * Creates the Deposit form and initializes cardNumber
-     * from the previous form.
-     * @param cardNumber 
-     */
-    public Deposit(String cardNumber) {
+    
+    public WithdrawalCurrent(String cardNumber) {
         initComponents();
+        amount = "";
         this.cardNumber = cardNumber;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -62,6 +61,8 @@ public class Deposit extends javax.swing.JFrame {
         jTextPaneL3 = new javax.swing.JTextPane();
         jScrollPane9 = new javax.swing.JScrollPane();
         jTextPaneL4 = new javax.swing.JTextPane();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        inputjTextPane = new javax.swing.JTextPane();
         jButtonL1 = new javax.swing.JButton();
         jButtonL2 = new javax.swing.JButton();
         jButtonL3 = new javax.swing.JButton();
@@ -78,7 +79,6 @@ public class Deposit extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jButton0 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,6 +107,11 @@ public class Deposit extends javax.swing.JFrame {
 
         jButtonR4.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jButtonR4.setText("<");
+        jButtonR4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonR4ActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(0, 255, 255));
 
@@ -118,20 +123,19 @@ public class Deposit extends javax.swing.JFrame {
         jTextPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTextPane1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jTextPane1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPane1.setText("To which account?");
+        jTextPane1.setText("Enter Amount");
         jTextPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jTextPane1);
 
         jTextPaneR3.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneR3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneR3.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPaneR3.setText("Chequing");
+        jTextPaneR3.setText("Help");
         jScrollPane2.setViewportView(jTextPaneR3);
 
         jTextPaneR2.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneR2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneR2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPaneR2.setText("Help");
         jScrollPane3.setViewportView(jTextPaneR2);
 
         jTextPaneR1.setBackground(new java.awt.Color(51, 51, 255));
@@ -142,6 +146,7 @@ public class Deposit extends javax.swing.JFrame {
         jTextPaneR4.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneR4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneR4.setForeground(new java.awt.Color(255, 255, 255));
+        jTextPaneR4.setText("OK");
         jScrollPane5.setViewportView(jTextPaneR4);
 
         jTextPaneL1.setBackground(new java.awt.Color(51, 51, 255));
@@ -157,13 +162,15 @@ public class Deposit extends javax.swing.JFrame {
         jTextPaneL3.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneL3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneL3.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPaneL3.setText("Savings");
         jScrollPane8.setViewportView(jTextPaneL3);
 
         jTextPaneL4.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneL4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneL4.setForeground(new java.awt.Color(255, 255, 255));
+        jTextPaneL4.setText("Cancel");
         jScrollPane9.setViewportView(jTextPaneL4);
+
+        jScrollPane10.setViewportView(inputjTextPane);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -178,7 +185,11 @@ public class Deposit extends javax.swing.JFrame {
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,9 +203,11 @@ public class Deposit extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -223,14 +236,14 @@ public class Deposit extends javax.swing.JFrame {
 
         jButtonL3.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jButtonL3.setText(">");
-        jButtonL3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonL3ActionPerformed(evt);
-            }
-        });
 
         jButtonL4.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jButtonL4.setText(">");
+        jButtonL4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonL4ActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(195, 221, 228));
         jPanel3.setLayout(new java.awt.GridLayout(3, 4));
@@ -335,16 +348,6 @@ public class Deposit extends javax.swing.JFrame {
         });
         jPanel3.add(jButton10);
 
-        jButton11.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        jButton11.setForeground(new java.awt.Color(255, 0, 0));
-        jButton11.setText("X");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButton11);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -418,75 +421,112 @@ public class Deposit extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR1ActionPerformed
-        
+
     }//GEN-LAST:event_jButtonR1ActionPerformed
 
     private void jButtonR3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR3ActionPerformed
-        // Deposit to Current Account
-        DepositCurrent depositCurrentFrame = new DepositCurrent(cardNumber);
-        depositCurrentFrame.setLocationRelativeTo(null);
-        depositCurrentFrame.setVisible(true);
-        this.dispose();        
+        Help helpFrame = new Help();
+        helpFrame.setLocationRelativeTo(null); // center the form
+        helpFrame.setVisible(true);
     }//GEN-LAST:event_jButtonR3ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonR4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR4ActionPerformed
+        // Withdraw Cash
 
+        MySQLAccess dbObj = new MySQLAccess();
+        try{
+            dbObj.createConnection();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+
+        try{
+            balance = dbObj.getCurrent(cardNumber);
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+
+        balance = balance - Integer.parseInt(amount);
+
+        if(balance < 0){
+            jTextPane1.setText("Insufficient funds");
+        }
+
+        else{
+            try{
+                dbObj.setCurrent(cardNumber, balance);
+            }
+            catch (Exception e){
+                System.out.println(e);
+            }
+        }
+
+        jTextPane1.setText(amount + " has been withdrawn from your account");
+    }//GEN-LAST:event_jButtonR4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        amount += "1";
+        inputjTextPane.setText(amount);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        amount += "2";
+        inputjTextPane.setText(amount);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+        amount += "3";
+        inputjTextPane.setText(amount);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+        amount += "4";
+        inputjTextPane.setText(amount);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-
+        amount += "5";
+        inputjTextPane.setText(amount);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-
+        amount += "6";
+        inputjTextPane.setText(amount);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-
+        amount += "7";
+        inputjTextPane.setText(amount);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-
+        amount += "8";
+        inputjTextPane.setText(amount);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-
+        amount += "9";
+        inputjTextPane.setText(amount);
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void jButton0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton0ActionPerformed
+        amount += "0";
+        inputjTextPane.setText(amount);
+    }//GEN-LAST:event_jButton0ActionPerformed
 
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        amount = "";
+        inputjTextPane.setText(amount);
     }//GEN-LAST:event_jButton10ActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+    private void jButtonL4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonL4ActionPerformed
         MainPageUI mainFrame = new MainPageUI();
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton11ActionPerformed
-
-    private void jButtonL3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonL3ActionPerformed
-        // Deposit to Savings Account
-        DepositSavings depositSavingsFrame = new DepositSavings(cardNumber);
-        depositSavingsFrame.setLocationRelativeTo(null);
-        depositSavingsFrame.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButtonL3ActionPerformed
-
-    private void jButton0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton0ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton0ActionPerformed
+    }//GEN-LAST:event_jButtonL4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -504,29 +544,29 @@ public class Deposit extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Deposit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WithdrawalCurrent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Deposit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WithdrawalCurrent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Deposit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WithdrawalCurrent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Deposit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WithdrawalCurrent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Deposit().setVisible(true);
+                new WithdrawalCurrent().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextPane inputjTextPane;
     private javax.swing.JButton jButton0;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -547,6 +587,7 @@ public class Deposit extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;

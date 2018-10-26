@@ -94,6 +94,11 @@ public class Transaction extends javax.swing.JFrame {
 
         jButtonR2.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jButtonR2.setText("<");
+        jButtonR2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonR2ActionPerformed(evt);
+            }
+        });
 
         jButtonR3.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jButtonR3.setText("<");
@@ -105,6 +110,11 @@ public class Transaction extends javax.swing.JFrame {
 
         jButtonR4.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jButtonR4.setText("<");
+        jButtonR4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonR4ActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(0, 255, 255));
 
@@ -162,7 +172,6 @@ public class Transaction extends javax.swing.JFrame {
         jTextPaneL4.setBackground(new java.awt.Color(51, 51, 255));
         jTextPaneL4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jTextPaneL4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPaneL4.setText("Transfer");
         jScrollPane9.setViewportView(jTextPaneL4);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -223,6 +232,11 @@ public class Transaction extends javax.swing.JFrame {
 
         jButtonL3.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jButtonL3.setText(">");
+        jButtonL3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonL3ActionPerformed(evt);
+            }
+        });
 
         jButtonL4.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jButtonL4.setText(">");
@@ -466,12 +480,40 @@ public class Transaction extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
+        MainPageUI mainFrame = new MainPageUI();
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton0ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton0ActionPerformed
+
+    
+    private void jButtonL3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonL3ActionPerformed
+        // WITHDRAWAL
+        
+        Withdrawal withdrawalFrame = new Withdrawal(cardNumber);
+        withdrawalFrame.setLocationRelativeTo(null);
+        withdrawalFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonL3ActionPerformed
+
+    private void jButtonR4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR4ActionPerformed
+        // Balance
+        
+        Balance balanceFrame = new Balance(cardNumber);
+        balanceFrame.setLocationRelativeTo(null);
+        balanceFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonR4ActionPerformed
+
+    private void jButtonR2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR2ActionPerformed
+        Help helpFrame = new Help();
+        helpFrame.setLocationRelativeTo(null); // center the form
+        helpFrame.setVisible(true);
+    }//GEN-LAST:event_jButtonR2ActionPerformed
 
     /**
      * @param args the command line arguments

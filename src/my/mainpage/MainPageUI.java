@@ -113,6 +113,11 @@ public class MainPageUI extends javax.swing.JFrame {
 
         jButtonR2.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jButtonR2.setText("<");
+        jButtonR2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonR2ActionPerformed(evt);
+            }
+        });
 
         jButtonR3.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jButtonR3.setText("<");
@@ -124,6 +129,11 @@ public class MainPageUI extends javax.swing.JFrame {
 
         jButtonR4.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jButtonR4.setText("<");
+        jButtonR4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonR4ActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(0, 255, 255));
 
@@ -480,7 +490,9 @@ public class MainPageUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButtonR3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR3ActionPerformed
-        // TODO add your handling code here:
+        Help helpFrame = new Help();
+        helpFrame.setLocationRelativeTo(null); // center the form
+        helpFrame.setVisible(true);
     }//GEN-LAST:event_jButtonR3ActionPerformed
 
     private void jButtonR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR1ActionPerformed
@@ -496,6 +508,20 @@ public class MainPageUI extends javax.swing.JFrame {
         pinEntry += "0";
         inputjTextPane.setText(pinEntry);
     }//GEN-LAST:event_jButton0ActionPerformed
+
+    private void jButtonR2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR2ActionPerformed
+        // ADMIN LOGIN
+        
+        Admin adminFrame = new Admin();
+        adminFrame.setLocationRelativeTo(null); // center the form
+        adminFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonR2ActionPerformed
+
+    private void jButtonR4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR4ActionPerformed
+        // EXIT
+        this.dispose();
+    }//GEN-LAST:event_jButtonR4ActionPerformed
 
     /**
      * @param args the command line arguments

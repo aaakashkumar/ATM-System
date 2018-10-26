@@ -253,6 +253,11 @@ public class Login extends javax.swing.JFrame {
 
         jButtonL4.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jButtonL4.setText(">");
+        jButtonL4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonL4ActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(195, 221, 228));
         jPanel3.setLayout(new java.awt.GridLayout(3, 4));
@@ -430,11 +435,13 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR1ActionPerformed
-        // LOGIN ACTION
+        
     }//GEN-LAST:event_jButtonR1ActionPerformed
 
     private void jButtonR3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR3ActionPerformed
-        // TODO add your handling code here:
+        Help helpFrame = new Help();
+        helpFrame.setLocationRelativeTo(null); // center the form
+        helpFrame.setVisible(true);
     }//GEN-LAST:event_jButtonR3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -536,6 +543,13 @@ public class Login extends javax.swing.JFrame {
         inputText += "0";
         inputjTextPane.setText(inputText);
     }//GEN-LAST:event_jButton0ActionPerformed
+
+    private void jButtonL4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonL4ActionPerformed
+        MainPageUI mainFrame = new MainPageUI();
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonL4ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -9,13 +9,13 @@ package my.mainpage;
  *
  * @author Akash PC
  */
-public class Deposit extends javax.swing.JFrame {
+public class Withdrawal extends javax.swing.JFrame {
     private String cardNumber;
     
     /**
-     * Creates new form Deposit
+     * Creates new form Withdrawal
      */
-    public Deposit() {
+    public Withdrawal() {
         initComponents();
     }
 
@@ -24,7 +24,7 @@ public class Deposit extends javax.swing.JFrame {
      * from the previous form.
      * @param cardNumber 
      */
-    public Deposit(String cardNumber) {
+    public Withdrawal(String cardNumber) {
         initComponents();
         this.cardNumber = cardNumber;
     }
@@ -96,6 +96,11 @@ public class Deposit extends javax.swing.JFrame {
 
         jButtonR2.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jButtonR2.setText("<");
+        jButtonR2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonR2ActionPerformed(evt);
+            }
+        });
 
         jButtonR3.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jButtonR3.setText("<");
@@ -118,7 +123,7 @@ public class Deposit extends javax.swing.JFrame {
         jTextPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTextPane1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 24)); // NOI18N
         jTextPane1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPane1.setText("To which account?");
+        jTextPane1.setText("From which account?");
         jTextPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jTextPane1);
 
@@ -418,16 +423,24 @@ public class Deposit extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR1ActionPerformed
-        
+
     }//GEN-LAST:event_jButtonR1ActionPerformed
 
     private void jButtonR3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR3ActionPerformed
-        // Deposit to Current Account
-        DepositCurrent depositCurrentFrame = new DepositCurrent(cardNumber);
-        depositCurrentFrame.setLocationRelativeTo(null);
-        depositCurrentFrame.setVisible(true);
-        this.dispose();        
+        // Withdrawal from Current Account
+        WithdrawalCurrent withdrawalCurrentFrame = new WithdrawalCurrent(cardNumber);
+        withdrawalCurrentFrame.setLocationRelativeTo(null);
+        withdrawalCurrentFrame.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonR3ActionPerformed
+
+    private void jButtonL3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonL3ActionPerformed
+        // Withdrawal from Savings Account
+        WithdrawalSavings withdrawalSavingsFrame = new WithdrawalSavings(cardNumber);
+        withdrawalSavingsFrame.setLocationRelativeTo(null);
+        withdrawalSavingsFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonL3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
@@ -438,7 +451,7 @@ public class Deposit extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -465,6 +478,10 @@ public class Deposit extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void jButton0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton0ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton0ActionPerformed
+
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
 
     }//GEN-LAST:event_jButton10ActionPerformed
@@ -476,17 +493,11 @@ public class Deposit extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton11ActionPerformed
 
-    private void jButtonL3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonL3ActionPerformed
-        // Deposit to Savings Account
-        DepositSavings depositSavingsFrame = new DepositSavings(cardNumber);
-        depositSavingsFrame.setLocationRelativeTo(null);
-        depositSavingsFrame.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButtonL3ActionPerformed
-
-    private void jButton0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton0ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton0ActionPerformed
+    private void jButtonR2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonR2ActionPerformed
+        Help helpFrame = new Help();
+        helpFrame.setLocationRelativeTo(null); // center the form
+        helpFrame.setVisible(true);
+    }//GEN-LAST:event_jButtonR2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -504,20 +515,20 @@ public class Deposit extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Deposit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Withdrawal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Deposit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Withdrawal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Deposit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Withdrawal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Deposit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Withdrawal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Deposit().setVisible(true);
+                new Withdrawal().setVisible(true);
             }
         });
     }
