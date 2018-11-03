@@ -9,7 +9,7 @@ import my.mainpage.database.MySQLAccess;
 
 /**
  *
- * @author Akash PC
+ * @author Akash Kumar
  */
 public class DepositCurrent extends javax.swing.JFrame {
     private String amount, cardNumber;

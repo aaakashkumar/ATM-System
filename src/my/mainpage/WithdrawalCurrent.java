@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package my.mainpage;
 
 import my.mainpage.database.MySQLAccess;
 
 /**
  *
- * @author Akash PC
+ * @author Akash Kumar
  */
 public class WithdrawalCurrent extends javax.swing.JFrame {
     private String amount, cardNumber;

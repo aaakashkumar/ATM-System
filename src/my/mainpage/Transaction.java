@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package my.mainpage;
 
 /**
  *
- * @author Akash PC
+ * @author Akash Kumar
  */
 public class Transaction extends javax.swing.JFrame {
     private String cardNumber;
